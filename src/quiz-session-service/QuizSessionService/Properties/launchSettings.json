@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "QuizSessionService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "index.html",
+      "environmentVariables": {
+        "REDIS_HOST": "localhost",
+        "REDIS_PORT": "6379"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5000"
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
+}

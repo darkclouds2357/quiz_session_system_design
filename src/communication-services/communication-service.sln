@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifierWorker", "NotifierWorker\NotifierWorker.csproj", "{6B414469-8886-4221-8A1B-764E48E9B799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifierWorker.Test", "NotifierWorker.Test\NotifierWorker.Test.csproj", "{D69E1F1D-CACE-41DB-A94F-B4FB649D8ABB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B414469-8886-4221-8A1B-764E48E9B799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B414469-8886-4221-8A1B-764E48E9B799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B414469-8886-4221-8A1B-764E48E9B799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B414469-8886-4221-8A1B-764E48E9B799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69E1F1D-CACE-41DB-A94F-B4FB649D8ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69E1F1D-CACE-41DB-A94F-B4FB649D8ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69E1F1D-CACE-41DB-A94F-B4FB649D8ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69E1F1D-CACE-41DB-A94F-B4FB649D8ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0800654-BB42-4E8E-88F3-96A908AE7B87}
+	EndGlobalSection
+EndGlobal

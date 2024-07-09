@@ -1,0 +1,48 @@
+actor user_in_group
+actor user
+
+participant questionnaire_service
+participant quiz_session_service
+participant exam_module
+participant notifier_worker
+
+opt start quiz session
+ questionnaire_service -> +quiz_session_service : start-quiz-session-command (async)
+ quiz_session_service -> -quiz_session_service : initial quiz session
+end
+
+opt join quiz session
+    user -> +quiz_session_service: POST /session/{session_id}/join
+    alt user validated
+        quiz_session_service --> user: HTTP 202 Accepted
+    else user not valid for quiz
+        quiz_session_service --> -user: HTTP 400 Bad Request
+    end
+    
+    quiz_session_service -> +notifier_worker: 
+    notifier_worker --> user: push private channel
+    note over notifier_worker, user: next exam question, current score, rank
+    notifier_worker --> -user_in_group: push group channel
+    note over notifier_worker, user: new user join, current leaderboard
+end
+
+opt submit question
+    user -> +quiz_session_service: PATCH /session/{session_id}/exam/{exam_id}
+    alt exam validated
+        note over quiz_session_service: validate exam id existed or in session
+        quiz_session_service --> user: HTTP 202 Accepted
+    else exam not valid
+        quiz_session_service --> -user: HTTP 400 Bad Request
+    end
+    
+    opt background mark exam
+        quiz_session_service -> *+exam_module: check exam answer
+        exam_module -> +quiz_session_service: user-exam-result-event
+        exam_module -> -notifier_worker: user-exam-submitted event
+        note over notifier_worker: exam result, next exam, current score, rank 
+        notifier_worker --> -user: push private channel
+        quiz_session_service -> -notifier_worker: leaderboard-rank-changed event
+        note over notifier_worker: new score rank list in leaderboard
+        notifier_worker --> -user_in_group: push group channel
+    end
+end
